@@ -1,0 +1,29 @@
+@use '../abstracts' as *;
+
+body.light {
+	--bg: hsl(0, 0%, 98%);
+	--element-bg: hsl(0, 0%, 100%);
+	--element-bg-hover: var(--element-bg);
+
+	--text-main: hsl(200, 15%, 8%);
+	--text-secondary: hsl(0, 0%, 52%);
+
+	--shadow: 0, 0, 0;
+
+	--text-inverse: #fff;
+	--bg-inverse: #333;
+	--bg-inverse-hover: #000;
+
+	--selection-bg: #333;
+	--selection-text: #fff;
+
+	--hover-color: rgba(0, 0, 0, 0.05);
+
+	--shadow-light: 0 0 5px 0 rgba(var(--shadow), 0.15);
+	--shadow-light-blur: 0 0 10px 0 rgba(var(--shadow), 0.15);
+
+	--shadow-intense: 0 0 5px 0 rgba(var(--shadow), 0.25);
+	--shadow-intense-blur: 0 0 10px 0 rgba(var(--shadow), 0.2);
+
+	--scrollbar-thumb-bg: hsla(0, 0%, 0%, 0.3);
+}

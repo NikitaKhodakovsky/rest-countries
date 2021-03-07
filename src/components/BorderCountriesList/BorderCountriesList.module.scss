@@ -1,0 +1,23 @@
+@use '../../sass/abstracts' as *;
+
+.list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+
+	li {
+		@include element;
+		a {
+			display: flex;
+			justify-content: center;
+			text-align: center;
+			align-items: center;
+			padding: 1rem 1.5rem;
+		}
+	}
+}
+
+.title {
+	font-size: 1.4rem;
+	margin-bottom: 2.5rem;
+}

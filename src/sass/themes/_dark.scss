@@ -1,0 +1,23 @@
+@use '../abstracts' as *;
+
+body.dark {
+	--bg: hsl(207, 26%, 17%);
+	--element-bg: hsl(209, 23%, 22%);
+	--element-bg-hover: var(--hover-color);
+
+	--text-main: hsl(0, 0%, 100%);
+	--text-secondary: hsl(0, 0%, 100%);
+
+	--text-inverse: #fff;
+	--bg-inverse: var(--element-bg);
+	--bg-inverse-hover: var(--element-bg-hover);
+
+	--shadow: none;
+
+	--selection-bg: #fff;
+	--selection-text: #000;
+
+	--hover-color: rgb(255, 255, 255, 0.125);
+
+	--scrollbar-thumb-bg: var(--element-bg-hover);
+}

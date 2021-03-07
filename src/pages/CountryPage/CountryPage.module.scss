@@ -1,0 +1,93 @@
+@use '../../sass/abstracts' as *;
+
+.country {
+	padding: 4rem 0.8rem 6rem 0.8rem;
+
+	@include breakpoint-up('medium') {
+		margin: 0 auto;
+		padding: 6rem 2rem 6rem 2rem;
+		font-size: 1.4rem;
+		max-width: 80rem;
+	}
+
+	@include breakpoint-up('large') {
+		max-width: 100%;
+		padding: 6rem 0 6rem 0;
+	}
+
+	@include breakpoint-up('xlarge') {
+		padding-top: 8rem;
+	}
+}
+
+.wrap {
+	display: flex;
+	flex-direction: column;
+
+	@include breakpoint-up('large') {
+		min-height: 50rem;
+		flex-direction: row;
+		align-items: center;
+	}
+}
+
+.flag {
+	margin-bottom: 5rem;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	box-shadow: var(--shadow-light);
+
+	&:hover {
+		box-shadow: var(--shadow-light-blur);
+	}
+
+	@include breakpoint-up('large') {
+		margin-bottom: 0;
+		max-width: 40%;
+	}
+
+	@include breakpoint-up('xlarge') {
+		max-width: 60rem;
+	}
+}
+
+.content {
+	@include breakpoint-up('large') {
+		margin-left: 8rem;
+	}
+
+	@include breakpoint-up('xlarge') {
+		margin-left: 12rem;
+	}
+}
+
+.title {
+	font-size: 1.8rem;
+	margin-bottom: 3.5rem;
+
+	@include breakpoint-up('medium') {
+		font-size: 2.4rem;
+	}
+}
+
+.button {
+	margin-bottom: 6.4rem;
+}
+
+.info {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 5rem;
+	margin-bottom: 5rem;
+
+	@include breakpoint-up('medium') {
+		grid-template-columns: auto auto;
+		align-items: start;
+		gap: 14rem;
+	}
+}
+
+.list {
+	row-gap: 2rem;
+}

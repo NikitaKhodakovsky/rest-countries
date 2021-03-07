@@ -1,0 +1,42 @@
+@use 'variables' as *;
+
+/* ------------------------------- Breakpoints ------------------------------ */
+
+@mixin breakpoint-up($size) {
+	@media (min-width: map-get($breakpoints-up, $size)) {
+		@content;
+	}
+}
+
+@mixin breakpoint-down($size) {
+	@media (max-width: map-get($breakpoints-down, $size)) {
+		@content;
+	}
+}
+
+@mixin hide-for-mobile {
+	@include breakpoint-down('medium') {
+		display: none;
+	}
+}
+
+@mixin hide-for-desktop {
+	@include breakpoint-up('large') {
+		display: none;
+	}
+}
+
+@mixin element {
+	box-shadow: var(--shadow-light);
+	background-color: var(--element-bg);
+	border-radius: var(--border-radius);
+
+	&:hover {
+		@include element-active;
+	}
+}
+
+@mixin element-active {
+	box-shadow: var(--shadow-light-blur);
+	background-color: var(--element-bg-hover);
+}

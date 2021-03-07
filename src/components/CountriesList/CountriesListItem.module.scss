@@ -1,0 +1,46 @@
+@use '../../sass/abstracts' as *;
+
+.listItem {
+	@include element;
+	margin: 0 auto;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+
+	width: 100%;
+	height: 100%;
+	max-width: 30rem;
+
+	overflow: hidden;
+	cursor: pointer;
+
+	&:hover {
+		box-shadow: var(--shadow-intense-blur);
+	}
+}
+
+.image {
+	object-position: center;
+	object-fit: cover;
+	height: 16rem;
+	width: 100%;
+	border-bottom: 1px solid rgba(var(--shadow), 0.1);
+}
+
+.body {
+	padding-top: 2rem;
+	width: 80%;
+	padding-bottom: 4rem;
+}
+
+.title {
+	font-size: 1.8rem;
+	font-weight: 800;
+	margin-bottom: 1.5rem;
+}
+
+.list {
+	row-gap: 1rem;
+}

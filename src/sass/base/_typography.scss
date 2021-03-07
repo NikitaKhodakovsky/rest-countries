@@ -1,0 +1,27 @@
+@use '../abstracts' as *;
+
+body {
+	color: var(--text-main);
+	--font-size: 1.2rem;
+	font-size: var(--font-size);
+	font-weight: 300;
+	font-family: 'Nunito', sans-serif;
+
+	@include breakpoint-up('large') {
+		--font-size: 1.4rem;
+		font-size: var(--font-size);
+	}
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	@extend %heading;
+}
+
+strong {
+	font-weight: 600;
+}

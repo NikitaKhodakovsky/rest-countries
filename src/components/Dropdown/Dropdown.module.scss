@@ -1,0 +1,94 @@
+@use '../../sass/abstracts' as *;
+
+.wrap {
+	position: relative;
+	cursor: pointer;
+	max-width: 30rem;
+	width: 100%;
+
+	z-index: 50;
+}
+
+.dropdown {
+	@include element;
+	width: 100%;
+	padding-left: 2.5rem;
+	padding-right: 2rem;
+	height: 4.8rem;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	&.active {
+		@include element-active;
+	}
+
+	@include breakpoint-up('large') {
+		height: 5.6rem;
+	}
+}
+
+.content {
+	@include element;
+	position: absolute;
+	right: 0;
+	left: 0;
+	top: 0.4rem + 4.8rem;
+	padding: 1rem 0;
+
+	@include breakpoint-up('large') {
+		top: 0.4rem + 5.6rem;
+	}
+
+	&:hover {
+		background-color: var(--element-bg);
+	}
+
+	li {
+		width: 100%;
+		padding: 1rem 2.5rem;
+
+		&:hover {
+			background-color: var(--hover-color);
+		}
+	}
+}
+
+/* Animations */
+
+.content {
+	&.entrance {
+		animation: swing-in-top-fwd 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+	}
+
+	&.exit {
+		animation: swing-out-top-bck 0.2s ease-out both;
+	}
+}
+
+@keyframes swing-in-top-fwd {
+	0% {
+		transform: rotateX(-100deg);
+		transform-origin: top;
+		opacity: 0;
+	}
+	100% {
+		transform: rotateX(0deg);
+		transform-origin: top;
+		opacity: 1;
+	}
+}
+
+@keyframes swing-out-top-bck {
+	0% {
+		transform: rotateX(0deg);
+		transform-origin: top;
+		opacity: 1;
+	}
+	100% {
+		transform: rotateX(-100deg);
+		transform-origin: top;
+		opacity: 0;
+	}
+}

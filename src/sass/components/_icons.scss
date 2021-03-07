@@ -1,0 +1,50 @@
+.icon {
+	display: inline-block;
+
+	width: 1.8rem;
+	height: 1.8rem;
+
+	background-color: var(--text-main);
+	mask-repeat: no-repeat;
+	mask-position: center;
+	mask-size: contain;
+
+	&.s-10 {
+		width: 1rem;
+		height: 1rem;
+	}
+
+	&.s-12 {
+		width: 1.2rem;
+		height: 1.2rem;
+	}
+
+	&.s-16 {
+		width: 1.6rem;
+		height: 1.6rem;
+	}
+
+	&.chevron {
+		mask-image: url('../../icons/chevron.svg');
+
+		&.up {
+			transform: rotate(180deg);
+		}
+	}
+
+	&.arrow-left {
+		mask-image: url('../../icons/arrow-left.svg');
+	}
+
+	&.moon {
+		mask-image: url('../../icons/moon.svg');
+	}
+
+	&.sun {
+		mask-image: url('../../icons/sun.svg');
+	}
+
+	&.search {
+		mask-image: url('../../icons/search.svg');
+	}
+}

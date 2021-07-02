@@ -1,9 +1,8 @@
+import { useTheme } from 'react-theme-lib'
 import { useEffect } from 'react'
 
-import { useTheme } from '../hooks/useTheme'
-
 export function ThemeColorMeta() {
-	const theme = useTheme()
+	const { theme } = useTheme()
 
 	useEffect(() => {
 		const meta = document.getElementById('theme-color-meta')

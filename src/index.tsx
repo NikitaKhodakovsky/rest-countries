@@ -1,10 +1,8 @@
 import { QueryClient, QueryClientProvider } from 'react-query'
+import { ThemeManager, ThemeProvider } from 'react-theme-lib'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { ReactQueryDevtools } from 'react-query/devtools'
 import ReactDOM from 'react-dom/client'
-
-import { ThemeManager } from './services/ThemeManager'
-import { ThemeContext } from './contexts/themeContext'
 
 import App from './App'
 
@@ -14,17 +12,17 @@ const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
 const queryClient = new QueryClient()
 
-const themeManager = new ThemeManager('light')
-
-themeManager.init()
+const themeManager = new ThemeManager({
+	htmlElement: document.body
+})
 
 root.render(
-	<ThemeContext.Provider value={themeManager}>
+	<ThemeProvider manager={themeManager}>
 		<QueryClientProvider client={queryClient}>
 			<Router>
 				<App />
 			</Router>
 			<ReactQueryDevtools />
 		</QueryClientProvider>
-	</ThemeContext.Provider>
+	</ThemeProvider>
 )

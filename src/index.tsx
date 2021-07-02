@@ -1,7 +1,7 @@
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { ReactQueryDevtools } from 'react-query/devtools'
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom/client'
 
 import { ThemeManager } from './services/ThemeManager'
 import { ThemeContext } from './contexts/themeContext'
@@ -10,13 +10,15 @@ import App from './App'
 
 import './sass/main.scss'
 
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
+
 const queryClient = new QueryClient()
 
 const themeManager = new ThemeManager('light')
 
 themeManager.init()
 
-ReactDOM.render(
+root.render(
 	<ThemeContext.Provider value={themeManager}>
 		<QueryClientProvider client={queryClient}>
 			<Router>
@@ -24,6 +26,5 @@ ReactDOM.render(
 			</Router>
 			<ReactQueryDevtools />
 		</QueryClientProvider>
-	</ThemeContext.Provider>,
-	document.getElementById('root')
+	</ThemeContext.Provider>
 )

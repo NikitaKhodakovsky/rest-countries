@@ -14,12 +14,12 @@ export default function App() {
 		<ErrorBoundary FallbackComponent={FallbackPage} onReset={() => window.location.reload()}>
 			<ThemeColorMeta />
 			<Routes>
-				<Route path='/' element={<Layout fixedHeader={true} />}>
-					<Route element={<HomePage />} />
-				</Route>
 				<Route path='/' element={<Layout />}>
 					<Route path='country/:code' element={<CountryPage />} />
 					<Route path='*' element={<NotFoundPage className='mt-7' />} />
+				</Route>
+				<Route element={<Layout fixedHeader={true} />}>
+					<Route index element={<HomePage />} />
 				</Route>
 			</Routes>
 		</ErrorBoundary>

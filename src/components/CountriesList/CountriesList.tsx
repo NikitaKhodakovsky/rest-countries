@@ -1,7 +1,7 @@
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { useState } from 'react'
 
-import { useFindManyCountries } from '../../hooks/useFindManyCountries'
+import { useFindManyCountries } from '../../queries/useFindManyCountries'
 import { CountriesListItem } from './CountriesListItem'
 import { ErrorPage } from '../../pages/ErrorPage'
 import { Loader } from '../Loader'

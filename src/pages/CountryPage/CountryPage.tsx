@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import { useEffect } from 'react'
 
-import { useFindCountryByCode } from '../../hooks/useFindCountryByCode'
+import { useFindCountryByCode } from '../../queries/useFindCountryByCode'
 import { numberWithCommas } from '../../utils/numberWithCommas'
 
 import { BorderCountriesList } from '../../components/BorderCountriesList'

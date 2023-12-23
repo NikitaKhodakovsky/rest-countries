@@ -2,7 +2,7 @@
 
 body.light {
 	--bg: hsl(0, 0%, 98%);
-	--elements-bg: hsl(0, 0%, 100%);
+	--element-bg: hsl(0, 0%, 100%);
 	--text-main: hsl(200, 15%, 8%);
 	--text-secondary: hsl(0, 0%, 52%);
 	--shadow: 0, 0, 0;
@@ -14,7 +14,7 @@ body.light {
 	--selection-text: rgba(255, 255, 255, 0.9);
 
 	--hover-color: rgba(0, 0, 0, 0.05);
-	--elements-hover-color: var(--elements-bg);
+	--elements-hover-color: var(--element-bg);
 
 	--shadow-light: 0 0 5px 0 rgba(var(--shadow), 0.15);
 	--shadow-light-blur: 0 0 10px 0 rgba(var(--shadow), 0.15);

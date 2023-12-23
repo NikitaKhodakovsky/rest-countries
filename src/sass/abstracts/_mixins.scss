@@ -28,7 +28,7 @@
 
 @mixin element {
 	box-shadow: var(--shadow-light);
-	background-color: var(--elements-bg);
+	background-color: var(--element-bg);
 	border-radius: var(--border-radius);
 
 	&:hover {

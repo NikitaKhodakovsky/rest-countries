@@ -8,7 +8,7 @@ export function ThemeColorMeta() {
 		const meta = document.getElementById('theme-color-meta')
 
 		if (meta) {
-			const bg = getComputedStyle(document.body).getPropertyValue('--elements-bg')
+			const bg = getComputedStyle(document.body).getPropertyValue('--element-bg')
 
 			meta.setAttribute('content', bg)
 		}

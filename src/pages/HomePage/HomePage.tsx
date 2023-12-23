@@ -1,5 +1,6 @@
 import { useSearchParams } from 'react-router-dom'
-import { Helmet } from 'react-helmet'
+
+import { useTitle } from '../../hooks/useTitle'
 
 import { CountriesList } from '../../components/CountriesList'
 import { RegionFilter } from '../../components/RegionFilter'
@@ -13,12 +14,10 @@ export function HomePage() {
 	const search = searchParams.get('search') || undefined
 	const region = searchParams.get('region') || undefined
 
+	useTitle('Where is the world?')
+
 	return (
 		<main className={styles.home}>
-			<Helmet>
-				<title>Where is the world?</title>
-				<meta name='description' content={'Page with info about all countries in the world'} />
-			</Helmet>
 			<div className={styles.filters}>
 				<Search />
 				<RegionFilter />

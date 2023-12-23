@@ -1,14 +1,15 @@
 import { useParams } from 'react-router-dom'
-import { Helmet } from 'react-helmet'
 import { useEffect } from 'react'
 
 import { useFindCountryByCode } from '../../queries/useFindCountryByCode'
 import { numberWithCommas } from '../../utils/numberWithCommas'
+import { useTitle } from '../../hooks/useTitle'
 
 import { BorderCountriesList } from '../../components/BorderCountriesList'
 import { BackButton } from '../../components/BackButton'
 import { List, ListItem } from '../../components/List'
 import { Loader } from '../../components/Loader'
+
 import { NotFoundPage } from '../NotFoundPage'
 import { ErrorPage } from '../ErrorPage'
 
@@ -17,10 +18,11 @@ import styles from './CountryPage.module.scss'
 export function CountryPage() {
 	const { code } = useParams<'code'>()
 
-	//if we load next country, we have scroll pos. from prev. country
+	const { isLoading, isError, data, error } = useFindCountryByCode(code)
+
 	useEffect(() => window.scrollTo(0, 0), [code])
 
-	const { isLoading, isError, data, error } = useFindCountryByCode(code)
+	useTitle(data?.name?.common)
 
 	if (isLoading) {
 		return <Loader />
@@ -43,10 +45,6 @@ export function CountryPage() {
 
 	return (
 		<div className={styles.country}>
-			<Helmet>
-				<title>{name.common}</title>
-				<meta name='description' content={[name, population, region, subregion].filter(i => i).join(' ')} />
-			</Helmet>
 			<BackButton className={styles.btn} />
 			<section className={styles.wrap}>
 				<img className={styles.flag} src={flags.svg} alt={name.common} />

@@ -1,10 +1,9 @@
 import { useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import { DropdownItem } from './DropdownItem'
+import { Wrapper } from '../Wrapper'
 
 import styles from './Dropdown.module.scss'
-import { DropdownItem } from './DropdownItem'
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
-import { Wrapper } from '../Wrapper'
 
 interface DropdownProps {
 	value?: string | null
@@ -27,17 +26,17 @@ export function Dropdown({ title, options, value, onChange, ...props }: Dropdown
 		setIsOpen(!isOpen)
 	}
 
-	const content = options.map((option) => {
+	const content = options.map(option => {
 		return <DropdownItem option={option} key={option.value} onClick={() => handler(option.value)} />
 	})
 
-	const finishTitle = value ? options.find((o) => o.value === value)?.label || value : title
+	const finishTitle = value ? options.find(o => o.value === value)?.label || value : title
 
 	return (
 		<Wrapper<HTMLDivElement> classNames={[styles.dropdownWrap]} {...props}>
 			<div className={`${styles.dropdown} ${isOpen ? styles.active : ''}`} onClick={() => setIsOpen(!isOpen)}>
 				<span>{finishTitle}</span>
-				<FontAwesomeIcon icon={faChevronDown} />
+				<div className={`icon chevron s-12 ${isOpen ? 'up' : 'down'} `}></div>
 			</div>
 			{isOpen && <ul className={styles.dropdownContent}>{content}</ul>}
 		</Wrapper>

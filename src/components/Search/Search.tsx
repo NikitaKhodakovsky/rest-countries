@@ -1,8 +1,7 @@
 import { ChangeEventHandler, useEffect, useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import * as fas from '@fortawesome/free-solid-svg-icons'
-import styles from './Search.module.scss'
 import { useSearchParams } from 'react-router-dom'
+
+import styles from './Search.module.scss'
 
 export function Search() {
 	const [searchParams, setSearchParams] = useSearchParams()
@@ -25,7 +24,7 @@ export function Search() {
 		setSearchParams(searchParams)
 	}
 
-	const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+	const onChange: ChangeEventHandler<HTMLInputElement> = e => {
 		const value = e.target.value
 		setInputValue(value)
 		searchParamsHandler('search', value)
@@ -33,7 +32,7 @@ export function Search() {
 
 	return (
 		<div className={styles.search}>
-			<FontAwesomeIcon icon={fas.faSearch} />
+			<div className='icon search s-16'></div>
 			<input type='text' placeholder='Search for a country...' value={inputValue} onChange={onChange} />
 		</div>
 	)

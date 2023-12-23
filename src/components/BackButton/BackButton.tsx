@@ -1,8 +1,8 @@
-import { HTMLAttributes } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import * as fas from '@fortawesome/free-solid-svg-icons'
+import { HTMLAttributes } from 'react'
+
 import { Wrapper } from '../Wrapper'
+
 import styles from './BackButton.module.scss'
 
 export function BackButton(props: HTMLAttributes<HTMLButtonElement>) {
@@ -10,7 +10,7 @@ export function BackButton(props: HTMLAttributes<HTMLButtonElement>) {
 
 	return (
 		<Wrapper<HTMLButtonElement> as='button' classNames={[styles.button]} onClick={() => navigate(-1)} {...props}>
-			<FontAwesomeIcon icon={fas.faArrowLeft} className={styles.icon} />
+			<div className={`icon arrow-left ${styles.icon}`}></div>
 			<span>Back</span>
 		</Wrapper>
 	)

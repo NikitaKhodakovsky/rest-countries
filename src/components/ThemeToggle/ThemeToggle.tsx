@@ -1,5 +1,3 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import * as far from '@fortawesome/free-regular-svg-icons'
 import { useTheme } from 'react-theme-lib'
 
 import styles from './ThemeToggle.module.scss'
@@ -11,7 +9,8 @@ export function ThemeToggle() {
 
 	return (
 		<div className={styles.themeToggle} onClick={toggleTheme}>
-			<FontAwesomeIcon icon={far.faMoon} />
+			<div className={theme === 'dark' ? 'icon sun s-14' : 'icon moon s-14'}></div>
+			{/* <div className='icon moon s-16'></div> */}
 			<span>{label}</span>
 		</div>
 	)

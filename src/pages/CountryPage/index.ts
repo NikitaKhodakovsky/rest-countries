@@ -1,1 +1,1 @@
-export { CountryPage as default } from './CountryPage'
+export * from './CountryPage'

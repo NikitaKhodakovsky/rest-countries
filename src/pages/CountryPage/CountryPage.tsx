@@ -1,17 +1,18 @@
-import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
-import NotFoundPage from '../NotFoundPage'
-import { ErrorPage } from '../ErrorPage/ErrorPage'
-//import { BackButton, BorderCountriesList, List, ListItem, Loader } from '../../components'
-import { numberWithCommas } from '../../helpers/numberWithCommas'
-import { useFindCountryByCode } from '../../hooks/useFindCountryByCode'
+import { useEffect } from 'react'
 
-import styles from './CountryPage.module.scss'
+import { useFindCountryByCode } from '../../hooks/useFindCountryByCode'
+import { numberWithCommas } from '../../utils/numberWithCommas'
+
+import { BorderCountriesList } from '../../components/BorderCountriesList'
 import { BackButton } from '../../components/BackButton'
 import { List, ListItem } from '../../components/List'
-import { BorderCountriesList } from '../../components/BorderCountriesList'
 import { Loader } from '../../components/Loader'
+import { NotFoundPage } from '../NotFoundPage'
+import { ErrorPage } from '../ErrorPage'
+
+import styles from './CountryPage.module.scss'
 
 export function CountryPage() {
 	const { code } = useParams<'code'>()
@@ -44,7 +45,7 @@ export function CountryPage() {
 		<div className={styles.country}>
 			<Helmet>
 				<title>{name.common}</title>
-				<meta name='description' content={[name, population, region, subregion].filter((i) => i).join(' ')} />
+				<meta name='description' content={[name, population, region, subregion].filter(i => i).join(' ')} />
 			</Helmet>
 			<BackButton className={styles.btn} />
 			<section className={styles.wrap}>
@@ -61,9 +62,7 @@ export function CountryPage() {
 						</List>
 						<List className={styles.list}>
 							<ListItem name='Top Level Domain:'>{tld}</ListItem>
-							<ListItem name='Currencies:'>
-								{Object.values(currencies || {}).map((c) => c?.name)}
-							</ListItem>
+							<ListItem name='Currencies:'>{Object.values(currencies || {}).map(c => c?.name)}</ListItem>
 							<ListItem name='Languages:'>{Object.values(languages || {})}</ListItem>
 						</List>
 					</div>

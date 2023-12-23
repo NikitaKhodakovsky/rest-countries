@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom'
+
 import { BackButton } from '../../components/BackButton'
+
 import styles from './ErrorPage.module.scss'
 
-interface ErrorPageProps {
+export interface ErrorPageProps {
 	title?: string
 	subtitle?: string
 }

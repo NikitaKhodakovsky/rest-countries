@@ -1,7 +1,7 @@
 import { useQuery, useQueryClient } from 'react-query'
 
-import { API, FetchError } from '../services'
-import { ICountry } from '../interfaces'
+import { API, FetchError } from '../api'
+import { ICountry } from '../types'
 
 interface FindManyCountriesProps {
 	search?: string | null
@@ -19,11 +19,11 @@ export function useFindManyCountries({ search, region }: FindManyCountriesProps 
 		async () => {
 			const data = await callback()
 
-			data.forEach((country) => {
+			data.forEach(country => {
 				queryClient.setQueryData(['country', { code: country.cca3 }], country)
 			})
 
-			return region && region !== 'All' ? data.filter((c) => c.region === region) : data
+			return region && region !== 'All' ? data.filter(c => c.region === region) : data
 		},
 		options
 	)

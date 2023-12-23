@@ -1,17 +1,18 @@
-import React, { Fragment, Suspense } from 'react'
-import { Helmet } from 'react-helmet'
 import { Route, Routes } from 'react-router-dom'
-import { Layout } from './components/Layout'
-import { useTheme } from './hooks/useTheme'
+import { Fragment, Suspense } from 'react'
+import { useTheme } from 'react-theme-lib'
+import { Helmet } from 'react-helmet'
 
-const HomePage = React.lazy(() => import('./pages/HomePage'))
-const CountryPage = React.lazy(() => import('./pages/CountryPage'))
-const ErrorPage = React.lazy(() => import('./pages/ErrorPage'))
-const NotFoundPage = React.lazy(() => import('./pages/NotFoundPage'))
+import { Layout } from './components/Layout'
+
+import { NotFoundPage } from './pages/NotFoundPage'
+import { CountryPage } from './pages/CountryPage'
+import { ErrorPage } from './pages/ErrorPage'
+import { HomePage } from './pages/HomePage'
 
 //Prevent rerender of whole page when user change theme
 const Head = () => {
-	const theme = useTheme()
+	const { theme } = useTheme()
 	return (
 		<Helmet>
 			<meta name='theme-color' content={theme === 'dark' ? '#003A70' : '#fff'} />

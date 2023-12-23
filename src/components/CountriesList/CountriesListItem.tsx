@@ -1,8 +1,11 @@
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { Link } from 'react-router-dom'
+
+import { numberWithCommas } from '../../utils/numberWithCommas'
+import { ICountry } from '../../types'
+
 import { List, ListItem } from '../List'
-import { numberWithCommas } from '../../helpers/numberWithCommas'
-import { ICountry } from '../../interfaces'
+
 import styles from './CountriesListItem.module.scss'
 
 interface CountriesListItemProps {

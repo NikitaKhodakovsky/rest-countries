@@ -1,6 +1,7 @@
 import { useQuery } from 'react-query'
-import { API, FetchError } from '../services'
-import { ICountry } from '../interfaces'
+
+import { API, FetchError } from '../api'
+import { ICountry } from '../types'
 
 export function useFindCountryByCode(code?: string | null) {
 	return useQuery<ICountry, FetchError>(['country', { code }], () => API.findCountryByCode(code || ''), {

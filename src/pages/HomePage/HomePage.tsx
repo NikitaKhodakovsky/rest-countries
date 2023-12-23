@@ -1,9 +1,10 @@
-import { Helmet } from 'react-helmet'
 import { useSearchParams } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
+
 import { CountriesList } from '../../components/CountriesList'
 import { RegionFilter } from '../../components/RegionFilter'
 import { Search } from '../../components/Search'
-//import { CountriesList, RegionFilter, Search } from '../../components'
+
 import styles from './HomePage.module.scss'
 
 export function HomePage() {

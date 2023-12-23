@@ -1,27 +1,28 @@
-import ReactDOM from 'react-dom'
-import { BrowserRouter as Router } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from 'react-query'
+import { ThemeManager, ThemeProvider } from 'react-theme-lib'
+import { BrowserRouter as Router } from 'react-router-dom'
 import { ReactQueryDevtools } from 'react-query/devtools'
+import ReactDOM from 'react-dom/client'
 
 import App from './App'
+
 import './sass/main.scss'
-import { ThemeManager } from './services'
-import { ThemeContext } from './contexts/themeContext'
+
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
 const queryClient = new QueryClient()
 
-const themeManager = new ThemeManager('light')
+const themeManager = new ThemeManager({
+	htmlElement: document.body
+})
 
-themeManager.init()
-
-ReactDOM.render(
-	<ThemeContext.Provider value={themeManager}>
+root.render(
+	<ThemeProvider manager={themeManager}>
 		<QueryClientProvider client={queryClient}>
 			<Router>
 				<App />
 			</Router>
 			<ReactQueryDevtools />
 		</QueryClientProvider>
-	</ThemeContext.Provider>,
-	document.getElementById('root')
+	</ThemeProvider>
 )

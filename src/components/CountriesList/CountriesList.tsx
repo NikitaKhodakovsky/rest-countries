@@ -1,13 +1,14 @@
-import { CountriesListItem } from './CountriesListItem'
-import { Loader } from '../Loader'
-import { useFindManyCountries } from '../../hooks/useFindManyCountries'
-import ErrorPage from '../../pages/ErrorPage'
-
-import styles from './CountriesList.module.scss'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { useState } from 'react'
 
-interface CountriesListProps {
+import { useFindManyCountries } from '../../hooks/useFindManyCountries'
+import { CountriesListItem } from './CountriesListItem'
+import { ErrorPage } from '../../pages/ErrorPage'
+import { Loader } from '../Loader'
+
+import styles from './CountriesList.module.scss'
+
+export interface CountriesListProps {
 	search?: string
 	region?: string
 }
@@ -29,19 +30,13 @@ export function CountriesList({ search, region }: CountriesListProps) {
 		return <ErrorPage />
 	}
 
-	const next = () => setDisplay((d) => d + 12)
+	const next = () => setDisplay(d => d + 12)
 	const nextPage = display <= data.length
 
 	return (
 		<div className={styles.wrap}>
-			<InfiniteScroll
-				className={styles.list}
-				loader={<Loader />}
-				dataLength={display}
-				hasMore={nextPage}
-				next={next}
-			>
-				{data?.slice(0, display).map((country) => (
+			<InfiniteScroll className={styles.list} loader={<Loader />} dataLength={display} hasMore={nextPage} next={next}>
+				{data?.slice(0, display).map(country => (
 					<CountriesListItem key={country.cca3} country={country} />
 				))}
 			</InfiniteScroll>

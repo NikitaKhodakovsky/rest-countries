@@ -43,7 +43,7 @@ export function Dropdown({ title, options, value, onChange, ...props }: Dropdown
 					<span>{finishTitle}</span>
 					<div className={`icon chevron s-12 ${isOpen ? 'up' : 'down'} `}></div>
 				</div>
-				{isOpen && <ul className={styles.dropdownContent}>{content}</ul>}
+				{isOpen && <ul className={`swing-in ${styles.content}`}>{content}</ul>}
 			</div>
 		</Wrapper>
 	)

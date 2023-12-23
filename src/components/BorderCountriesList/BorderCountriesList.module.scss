@@ -1,0 +1,31 @@
+@use '../../sass/abstracts' as *;
+
+.list {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-auto-rows: min-content;
+	gap: 1rem;
+
+	@include breakpoint-up('medium') {
+		grid-template-columns: repeat(5, 1fr);
+	}
+
+	li {
+		@include element;
+		height: 100%;
+		a {
+			width: 100%;
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			text-align: center;
+			align-items: center;
+			padding: 1rem 0;
+		}
+	}
+}
+
+.title {
+	font-size: 1.4rem;
+	margin-bottom: 2.5rem;
+}

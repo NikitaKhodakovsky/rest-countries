@@ -1,0 +1,44 @@
+@use '../../sass/abstracts' as *;
+
+.wrap {
+	margin-top: 5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.ldsDualRing {
+	display: block;
+	width: 4rem;
+	height: 4rem;
+
+	@include breakpoint-up('large') {
+		width: 6rem;
+		height: 6rem;
+	}
+}
+.ldsDualRing:after {
+	content: ' ';
+	display: block;
+	width: 4rem;
+	height: 4rem;
+	border-radius: 50%;
+	border: 0.35rem solid var(--text-main);
+	border-color: var(--text-main) transparent var(--text-main) transparent;
+	animation: lds-dual-ring 1.2s linear infinite;
+
+	@include breakpoint-up('large') {
+		width: 6.4rem;
+		height: 6.4rem;
+		margin: 0.8rem;
+		border-width: 0.5rem;
+	}
+}
+@keyframes lds-dual-ring {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}

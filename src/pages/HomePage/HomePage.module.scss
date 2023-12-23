@@ -1,0 +1,19 @@
+@use '../../sass/abstracts' as *;
+
+.filters {
+	@include breakpoint-up('large') {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+}
+
+.home {
+	//fixed header
+	padding-top: 8rem + 2.5rem;
+	padding-bottom: 6.5rem;
+
+	@include breakpoint-up('large') {
+		padding-top: 8rem + 4.8rem;
+	}
+}

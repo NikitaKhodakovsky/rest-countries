@@ -1,0 +1,43 @@
+@use '../../sass/abstracts' as *;
+
+.hide {
+	top: -8rem;
+}
+
+.show {
+	top: 0;
+}
+
+.fixed {
+	transition: top 0.2s;
+	position: fixed;
+
+	//pos-relative in region-filter
+	z-index: 100;
+}
+
+.headerWrap {
+	box-shadow: var(--shadow-light);
+	width: 100%;
+	background-color: var(--elements-bg);
+}
+
+.header {
+	@extend %container;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 8rem;
+}
+
+.title {
+	font-size: 1.6rem;
+
+	@include breakpoint-up('medium') {
+		font-size: 1.8rem;
+	}
+
+	@include breakpoint-up('large') {
+		font-size: 2rem;
+	}
+}

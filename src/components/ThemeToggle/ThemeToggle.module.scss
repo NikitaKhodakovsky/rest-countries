@@ -1,0 +1,18 @@
+@use '../../sass/abstracts' as *;
+
+.themeToggle {
+	@include element;
+	font-weight: 600;
+	padding: 1rem 1.5rem;
+	cursor: pointer;
+
+	box-shadow: none;
+
+	&:hover {
+		box-shadow: var(--shadow-intense);
+	}
+
+	span {
+		margin-left: 0.5rem;
+	}
+}

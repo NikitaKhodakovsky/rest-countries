@@ -1,0 +1,17 @@
+@use '../../sass/abstracts' as *;
+
+.button {
+	@include element;
+	color: var(--text-main);
+	padding: 1rem 2.5rem;
+	text-align: center;
+
+	@include breakpoint-up('medium') {
+		padding: 1.2rem 4rem;
+	}
+}
+
+.icon {
+	font-weight: 500;
+	margin-right: 0.8rem;
+}

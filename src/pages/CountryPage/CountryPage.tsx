@@ -25,11 +25,17 @@ export function CountryPage() {
 	useTitle(data?.name?.common)
 
 	if (isLoading) {
-		return <Loader />
+		return (
+			<div className={styles.country}>
+				<BackButton className={styles.btn} />
+				<Loader />
+			</div>
+		)
 	}
 
 	if (isError) {
 		const status = error?.status
+
 		if (status && status < 500 && status >= 400) {
 			return <NotFoundPage />
 		}

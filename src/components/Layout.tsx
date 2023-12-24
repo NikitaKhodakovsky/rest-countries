@@ -1,6 +1,6 @@
-import { ErrorBoundary } from 'react-error-boundary'
 import { Outlet } from 'react-router-dom'
-import { Fallback } from './Fallback'
+import { Fragment } from 'react'
+
 import { Header } from './Header'
 
 interface LayoutProps {
@@ -9,11 +9,11 @@ interface LayoutProps {
 
 export function Layout({ fixedHeader }: LayoutProps) {
 	return (
-		<ErrorBoundary FallbackComponent={Fallback}>
+		<Fragment>
 			<Header fixed={fixedHeader} />
 			<div className='container'>
 				<Outlet />
 			</div>
-		</ErrorBoundary>
+		</Fragment>
 	)
 }

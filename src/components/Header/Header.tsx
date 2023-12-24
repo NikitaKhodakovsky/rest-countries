@@ -1,8 +1,11 @@
-import { HTMLAttributes } from 'react'
 import { Link } from 'react-router-dom'
+import { HTMLAttributes } from 'react'
+
 import { useHideOnScroll } from '../../hooks/useHideOnScroll'
+
 import { ThemeToggle } from '../ThemeToggle'
 import { Wrapper } from '../Wrapper'
+
 import styles from './Header.module.scss'
 
 interface HeaderProps extends HTMLAttributes<HTMLDivElement> {
@@ -10,13 +13,13 @@ interface HeaderProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export function Header({ fixed = false, ...props }: HeaderProps) {
-	const hide = useHideOnScroll(15)
+	const isHidden = useHideOnScroll(20)
 
-	const classNames = [styles.headerWrap, fixed ? styles.fixed : null, hide ? styles.hide : styles.show]
+	const classNames = [styles.header, fixed ? styles.fixed : null, isHidden ? styles.hidden : null]
 
 	return (
 		<Wrapper<HTMLDivElement> classNames={classNames} as='div' {...props}>
-			<header className={styles.header}>
+			<header className={styles.content}>
 				<Link to='/'>
 					<h3 className={styles.title} onClick={() => window.scrollTo(0, 0)}>
 						Where is the world?

@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 
-import { useFindCountryByCode } from '../../queries/useFindCountryByCode'
+import { useCountryByCodeQuery } from '../../queries/useCountryByCodeQuery'
 
 export function BorderCountriesListItem({ code }: { code: string }) {
-	const { isLoading, isError, data } = useFindCountryByCode(code)
+	const { isLoading, isError, data } = useCountryByCodeQuery(code)
 
 	if (isLoading || isError || !data) {
 		return null

@@ -6,7 +6,7 @@ export interface ICountry {
 	flags: { svg: string; png: string }
 	borders?: string[]
 	currencies?: object
-	region?: string
+	region: string
 	subregion?: string
 	tld?: string[]
 	cca2: string

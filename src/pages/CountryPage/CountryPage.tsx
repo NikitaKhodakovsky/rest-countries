@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 import { useEffect } from 'react'
 
-import { useFindCountryByCode } from '../../queries/useFindCountryByCode'
+import { useCountryByCodeQuery } from '../../queries/useCountryByCodeQuery'
 import { numberWithCommas } from '../../utils/numberWithCommas'
 import { useTitle } from '../../hooks/useTitle'
 
@@ -18,7 +18,7 @@ import styles from './CountryPage.module.scss'
 export function CountryPage() {
 	const { code } = useParams<'code'>()
 
-	const { isLoading, isError, data, error } = useFindCountryByCode(code)
+	const { isLoading, isError, data, error } = useCountryByCodeQuery(code ?? '')
 
 	useEffect(() => window.scrollTo(0, 0), [code])
 
@@ -36,7 +36,7 @@ export function CountryPage() {
 	if (isError) {
 		const status = error?.status
 
-		if (status && status < 500 && status >= 400) {
+		if (status === 404) {
 			return <NotFoundPage />
 		}
 

@@ -1,23 +1,17 @@
 import { useSearchParams } from 'react-router-dom'
-import styles from './RegionFilter.module.scss'
+
+import { Region } from '../../queries/useAllCountriesQuery'
+
 import { Dropdown } from '../Dropdown'
 
-const options = [
-	{ value: 'All' },
-	{ value: 'Africa' },
-	{ label: 'America', value: 'Americas' },
-	{ value: 'Antarctic' },
-	{ value: 'Asia' },
-	{ value: 'Europe' },
-	{ value: 'Oceania' }
-]
+import styles from './RegionFilter.module.scss'
 
 export function RegionFilter() {
 	const [searchParams, setSearchParams] = useSearchParams()
 	const value = searchParams.get('region')
 
-	const onChange = (v: string) => {
-		searchParams.set('region', v)
+	const onChange = (region: string) => {
+		searchParams.set('region', region)
 		setSearchParams(searchParams)
 	}
 
@@ -25,7 +19,7 @@ export function RegionFilter() {
 		<Dropdown
 			title='Filter by Region'
 			value={value}
-			options={options}
+			options={Object.values(Region)}
 			onChange={onChange}
 			className={styles.regionFilter}
 		/>

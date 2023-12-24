@@ -1,7 +1,7 @@
-import { QueryClient, QueryClientProvider } from 'react-query'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { ThemeManager, ThemeProvider } from 'react-theme-lib'
 import { BrowserRouter as Router } from 'react-router-dom'
-import { ReactQueryDevtools } from 'react-query/devtools'
 import ReactDOM from 'react-dom/client'
 
 import App from './App'

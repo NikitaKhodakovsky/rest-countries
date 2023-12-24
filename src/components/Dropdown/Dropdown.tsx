@@ -1,22 +1,17 @@
 import { useRef, useState } from 'react'
 
-import { DropdownItem } from './DropdownItem'
+import { useOutsideAlerter } from '../../hooks/useOutsideAlerter'
+
 import { Wrapper } from '../Wrapper'
 
 import styles from './Dropdown.module.scss'
-import { useOutsideAlerter } from '../../hooks/useOutsideAlerter'
 
 interface DropdownProps {
 	value?: string | null
-	options: DropdownOption[]
+	options: string[]
 	title?: string
 	onChange: (v: string) => void
 	className?: string
-}
-
-export interface DropdownOption {
-	label?: string
-	value: string
 }
 
 export function Dropdown({ title, options, value, onChange, ...props }: DropdownProps) {
@@ -30,20 +25,18 @@ export function Dropdown({ title, options, value, onChange, ...props }: Dropdown
 		setIsOpen(!isOpen)
 	}
 
-	const content = options.map(option => {
-		return <DropdownItem option={option} key={option.value} onClick={() => handler(option.value)} />
-	})
-
-	const finishTitle = value ? options.find(o => o.value === value)?.label || value : title
-
 	return (
 		<Wrapper<HTMLDivElement> {...props}>
 			<div className={styles.wrap} ref={ref}>
 				<div className={`${styles.dropdown} ${isOpen ? styles.active : ''}`} onClick={() => setIsOpen(!isOpen)}>
-					<span>{finishTitle}</span>
+					<span>{value ?? title}</span>
 					<div className={`icon chevron s-12 ${isOpen ? 'up' : 'down'} `}></div>
 				</div>
-				<ul className={`${styles.content} ${isOpen ? styles.open : styles.hidden}`}>{content}</ul>
+				<ul className={`${styles.content} ${isOpen ? styles.open : styles.hidden}`}>
+					{options.map(value => (
+						<li onClick={() => handler(value)}>{value}</li>
+					))}
+				</ul>
 			</div>
 		</Wrapper>
 	)

@@ -1,20 +1,23 @@
 import InfiniteScroll from 'react-infinite-scroll-component'
+import { useSearchParams } from 'react-router-dom'
 import { useState } from 'react'
 
-import { useFindManyCountries } from '../../queries/useFindManyCountries'
+import { useAllCountriesQuery } from '../../queries/useAllCountriesQuery'
+
 import { CountriesListItem } from './CountriesListItem'
-import { ErrorPage } from '../../pages/ErrorPage'
 import { Loader } from '../Loader'
+
+import { ErrorPage } from '../../pages/ErrorPage'
 
 import styles from './CountriesList.module.scss'
 
-export interface CountriesListProps {
-	search?: string
-	region?: string
-}
+export function CountriesList() {
+	const [searchParams] = useSearchParams()
 
-export function CountriesList({ search, region }: CountriesListProps) {
-	const { isLoading, isError, data, error } = useFindManyCountries({ search, region })
+	const search = searchParams.get('search') || undefined
+	const region = searchParams.get('region') || undefined
+
+	const { isLoading, isError, data, error } = useAllCountriesQuery({ search, region })
 	const [display, setDisplay] = useState(12)
 
 	if (isLoading) {

@@ -1,39 +1,29 @@
-import { ChangeEventHandler, useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
+import { ChangeEventHandler } from 'react'
 
 import styles from './Search.module.scss'
 
 export function Search() {
 	const [searchParams, setSearchParams] = useSearchParams()
 
-	const search = searchParams.get('search') || undefined
-
-	const [inputValue, setInputValue] = useState(search || '')
-
-	//type text to input, then click on logo. Prev value leave in input, but ?search not exist
-	useEffect(() => setInputValue(search || ''), [search])
-
-	const searchParamsHandler = (key: string, value: string) => {
-		searchParams.delete('page')
-		value = value.trim()
-		if (value === '') {
-			searchParams.delete(key)
-		} else {
-			searchParams.set(key, value)
-		}
-		setSearchParams(searchParams)
-	}
+	const search = searchParams.get('search') ?? ''
 
 	const onChange: ChangeEventHandler<HTMLInputElement> = e => {
-		const value = e.target.value
-		setInputValue(value)
-		searchParamsHandler('search', value)
+		const value = e.target.value.trim()
+
+		if (value === '') {
+			searchParams.delete('search')
+		} else {
+			searchParams.set('search', value)
+		}
+
+		setSearchParams(searchParams)
 	}
 
 	return (
 		<div className={styles.search}>
 			<div className='icon search s-16'></div>
-			<input type='text' placeholder='Search for a country...' value={inputValue} onChange={onChange} />
+			<input type='text' placeholder='Search for a country...' value={search} onChange={onChange} />
 		</div>
 	)
 }

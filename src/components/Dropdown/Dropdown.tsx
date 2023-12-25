@@ -15,12 +15,18 @@ interface DropdownProps {
 }
 
 export function Dropdown({ title, options, value, onChange, ...props }: DropdownProps) {
+	const [touched, setTouched] = useState(false)
 	const [isOpen, setIsOpen] = useState(false)
 	const ref = useRef(null)
 
 	useOutsideAlerter(ref, () => setIsOpen(false))
 
-	const handler = (v: string) => {
+	const buttonClickHandler = () => {
+		setIsOpen(!isOpen)
+		setTouched(true)
+	}
+
+	const itemClickHandler = (v: string) => {
 		onChange(v)
 		setIsOpen(!isOpen)
 	}
@@ -28,13 +34,15 @@ export function Dropdown({ title, options, value, onChange, ...props }: Dropdown
 	return (
 		<Wrapper<HTMLDivElement> {...props}>
 			<div className={styles.wrap} ref={ref}>
-				<div className={`${styles.dropdown} ${isOpen ? styles.active : ''}`} onClick={() => setIsOpen(!isOpen)}>
+				<div className={`${styles.dropdown} ${isOpen ? styles.active : ''}`} onClick={buttonClickHandler}>
 					<span>{value ?? title}</span>
 					<div className={`icon chevron s-12 ${isOpen ? 'up' : 'down'} `}></div>
 				</div>
-				<ul className={`${styles.content} ${isOpen ? styles.open : styles.hidden}`}>
+				<ul className={`${styles.content} ${touched ? (isOpen ? styles.open : styles.hidden) : ''}`}>
 					{options.map(value => (
-						<li onClick={() => handler(value)}>{value}</li>
+						<li key={value} onClick={() => itemClickHandler(value)}>
+							{value}
+						</li>
 					))}
 				</ul>
 			</div>

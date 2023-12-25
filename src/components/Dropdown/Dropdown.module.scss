@@ -35,6 +35,8 @@
 	top: 0.4rem + 4.8rem;
 	padding: 1rem 0;
 
+	display: none;
+
 	@include breakpoint-up('large') {
 		top: 0.4rem + 5.6rem;
 	}
@@ -77,14 +79,15 @@
 
 @keyframes swing-out-top-bck {
 	0% {
+		display: block;
 		transform: rotateX(0deg);
 		transform-origin: top;
 		opacity: 1;
 	}
 	100% {
+		display: none;
 		transform: rotateX(-100deg);
 		transform-origin: top;
 		opacity: 0;
-		display: none;
 	}
 }

@@ -54,6 +54,7 @@ export function useAllCountriesQuery(params: FindAllCountriesParams = {}) {
 	return useQuery<ICountry[], FetchError>({
 		queryKey: allCountriesQueryKeyFactory(params),
 		queryFn: ({ signal }) => findAllCountries(params, client, signal),
-		staleTime: Infinity
+		staleTime: Infinity,
+		retry: false
 	})
 }

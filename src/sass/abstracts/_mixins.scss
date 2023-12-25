@@ -38,5 +38,5 @@
 
 @mixin element-active {
 	box-shadow: var(--shadow-light-blur);
-	background-color: var(--elements-hover-color);
+	background-color: var(--element-bg-hover);
 }

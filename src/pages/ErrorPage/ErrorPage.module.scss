@@ -38,12 +38,18 @@
 }
 
 .homeButton {
-	@include element;
-	background: var(--bg-inverse);
+	background-color: var(--bg-inverse);
+	border-radius: var(--border-radius);
+	box-shadow: var(--shadow-light);
 	color: var(--text-inverse);
+
 	padding: 4rem;
 	font-size: 1.4rem;
 	padding: 1rem 2rem;
+
+	&:hover {
+		background-color: var(--bg-inverse-hover);
+	}
 
 	@include breakpoint-up('large') {
 		font-size: 1.6rem;

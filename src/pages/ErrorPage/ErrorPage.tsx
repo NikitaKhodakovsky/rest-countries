@@ -1,4 +1,3 @@
-import { BackButton } from '../../components/BackButton'
 import { useTitle } from '../../hooks/useTitle'
 
 import styles from './ErrorPage.module.scss'

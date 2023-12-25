@@ -1,0 +1,7 @@
+services:
+    rest-countries:
+        container_name: rest-countries
+        build:
+            context: .
+        ports:
+            - ${NGINX_PORT}:80

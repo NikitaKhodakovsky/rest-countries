@@ -27,6 +27,11 @@
 		"react-router-dom": "^6.21.1",
 		"react-theme-lib": "^1.0.3"
 	},
+	"overrides": {
+		"react-scripts": {
+			"typescript": "^5"
+		}
+	},
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",

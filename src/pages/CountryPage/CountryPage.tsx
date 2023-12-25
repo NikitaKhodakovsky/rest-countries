@@ -11,68 +11,46 @@ import { List, ListItem } from '../../components/List'
 import { Loader } from '../../components/Loader'
 
 import { NotFoundPage } from '../NotFoundPage'
-import { ErrorPage } from '../ErrorPage'
 
 import styles from './CountryPage.module.scss'
 
 export function CountryPage() {
 	const { code } = useParams<'code'>()
 
-	const { isLoading, isError, data, error } = useCountryByCodeQuery(code ?? '')
+	const { isFetching, isError, data } = useCountryByCodeQuery(code ?? '')
 
 	useEffect(() => window.scrollTo(0, 0), [code])
 
 	useTitle(data?.name?.common)
 
-	if (isLoading) {
-		return (
-			<div className={styles.country}>
-				<BackButton className={styles.btn} />
-				<Loader />
-			</div>
-		)
-	}
-
-	if (isError) {
-		const status = error?.status
-
-		if (status === 404) {
-			return <NotFoundPage />
-		}
-
-		return <ErrorPage />
-	}
-
-	if (!data) {
-		return <NotFoundPage />
-	}
-
-	const { name, flags, population, region, subregion, capital, tld, languages, currencies, borders } = data
-
 	return (
 		<div className={styles.country}>
-			<BackButton className={styles.btn} />
-			<section className={styles.wrap}>
-				<img className={styles.flag} src={flags.svg} alt={name.common} />
-				<div className={styles.content}>
-					<h1 className={styles.title}>{name.common}</h1>
-					<div className={styles.info}>
-						<List className={styles.list}>
-							<ListItem name='Native Name:'>{Object.values(name.nativeName || {})[0]?.official}</ListItem>
-							<ListItem name='Population:'>{numberWithCommas(population)}</ListItem>
-							<ListItem name='Region:'>{region}</ListItem>
-							<ListItem name='Sub Region:'>{subregion}</ListItem>
-							<ListItem name='Capital:'>{capital}</ListItem>
-						</List>
-						<List className={styles.list}>
-							<ListItem name='Top Level Domain:'>{tld}</ListItem>
-							<ListItem name='Currencies:'>{Object.values(currencies || {}).map(c => c?.name)}</ListItem>
-							<ListItem name='Languages:'>{Object.values(languages || {})}</ListItem>
-						</List>
+			<BackButton className={styles.button} />
+			{isFetching && <Loader />}
+			{isError && <NotFoundPage subtitle='Country not found.' />}
+			{data && (
+				<section className={styles.wrap}>
+					<img className={styles.flag} src={data.flags.svg} alt={data.name.common} />
+					<div className={styles.content}>
+						<h1 className={styles.title}>{data.name.common}</h1>
+						<div className={styles.info}>
+							<List className={styles.list}>
+								<ListItem name='Native Name:'>{Object.values(data.name.nativeName || {})[0]?.official}</ListItem>
+								<ListItem name='Population:'>{numberWithCommas(data.population)}</ListItem>
+								<ListItem name='Region:'>{data.region}</ListItem>
+								<ListItem name='Sub Region:'>{data.subregion}</ListItem>
+								<ListItem name='Capital:'>{data.capital}</ListItem>
+							</List>
+							<List className={styles.list}>
+								<ListItem name='Top Level Domain:'>{data.tld}</ListItem>
+								<ListItem name='Currencies:'>{Object.values(data.currencies || {}).map(c => c?.name)}</ListItem>
+								<ListItem name='Languages:'>{Object.values(data.languages || {})}</ListItem>
+							</List>
+						</div>
+						<BorderCountriesList codes={data.borders} />
 					</div>
-					<BorderCountriesList codes={borders} />
-				</div>
-			</section>
+				</section>
+			)}
 		</div>
 	)
 }

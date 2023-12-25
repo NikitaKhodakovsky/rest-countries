@@ -17,6 +17,7 @@ export function useCountryByCodeQuery(code: string) {
 	return useQuery<ICountry, FetchError>({
 		queryKey: countryByCodeQueryKeyFactory(code),
 		queryFn: ({ signal }) => findCountryByCode(code, signal),
-		staleTime: Infinity
+		staleTime: Infinity,
+		retry: false
 	})
 }

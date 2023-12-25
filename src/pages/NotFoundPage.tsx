@@ -1,9 +1,11 @@
 import { useNavigate } from 'react-router-dom'
 
-import { ErrorPage } from './ErrorPage/ErrorPage'
+import { ErrorPage, ErrorPageProps } from './ErrorPage/ErrorPage'
 
-export function NotFoundPage() {
+export type NotFoundPageProps = Pick<ErrorPageProps, 'subtitle' | 'className'>
+
+export function NotFoundPage({ subtitle = 'Page not found.', className }: NotFoundPageProps) {
 	const navigate = useNavigate()
 
-	return <ErrorPage title='404' subtitle='Page not found.' buttonText='Go Home' onClick={() => navigate('/')} />
+	return <ErrorPage className={className} title='404' subtitle={subtitle} buttonText='Go Home' onClick={() => navigate('/')} />
 }

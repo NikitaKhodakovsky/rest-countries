@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 
+import { useEntranceExitAnimation } from '../../hooks/useEntranceExitAnimation'
 import { useOutsideAlerter } from '../../hooks/useOutsideAlerter'
 
 import { Wrapper } from '../Wrapper'
@@ -15,38 +16,37 @@ interface DropdownProps {
 }
 
 export function Dropdown({ title, options, value, onChange, ...props }: DropdownProps) {
-	const [touched, setTouched] = useState(false)
 	const [isOpen, setIsOpen] = useState(false)
 	const ref = useRef(null)
 
-	//TODO: if dispay none, click is otside and this cause this
-	// Show and untouched
-	useOutsideAlerter(ref, () => setIsOpen(false))
+	const toggle = () => setIsOpen(!isOpen)
+	const close = () => setIsOpen(false)
 
-	const buttonClickHandler = () => {
-		setIsOpen(!isOpen)
-		setTouched(true)
-	}
+	useOutsideAlerter(ref, close)
+
+	const { animation, render } = useEntranceExitAnimation({ isOpen, entrance: styles.entrance, exit: styles.exit, exitDuration: 200 })
 
 	const itemClickHandler = (v: string) => {
 		onChange(v)
-		setIsOpen(!isOpen)
+		close()
 	}
 
 	return (
 		<Wrapper<HTMLDivElement> {...props}>
 			<div className={styles.wrap} ref={ref}>
-				<div className={`${styles.dropdown} ${isOpen ? styles.active : ''}`} onClick={buttonClickHandler}>
+				<div className={`${styles.dropdown} ${isOpen ? styles.active : ''}`} onClick={toggle}>
 					<span>{value ?? title}</span>
 					<div className={`icon chevron s-12 ${isOpen ? 'up' : 'down'} `}></div>
 				</div>
-				<ul className={`${styles.content} ${touched ? (isOpen ? styles.open : styles.hidden) : ''}`}>
-					{options.map(value => (
-						<li key={value} onClick={() => itemClickHandler(value)}>
-							{value}
-						</li>
-					))}
-				</ul>
+				{render && (
+					<ul className={`${styles.content} ${animation}`}>
+						{options.map(value => (
+							<li key={value} onClick={() => itemClickHandler(value)}>
+								{value}
+							</li>
+						))}
+					</ul>
+				)}
 			</div>
 		</Wrapper>
 	)

@@ -19,6 +19,8 @@ export function Dropdown({ title, options, value, onChange, ...props }: Dropdown
 	const [isOpen, setIsOpen] = useState(false)
 	const ref = useRef(null)
 
+	//TODO: if dispay none, click is otside and this cause this
+	// Show and untouched
 	useOutsideAlerter(ref, () => setIsOpen(false))
 
 	const buttonClickHandler = () => {

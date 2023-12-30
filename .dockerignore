@@ -1,0 +1,11 @@
+Dockerfile*
+
+node_modules
+build
+dist
+
+.dockerignore
+.gitignore
+
+/**/*.test.ts*
+/**/*.spec.ts*

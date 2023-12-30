@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 
 import { fetcher, FetchError } from '../fetcher'
 import { ICountry } from '../types'
@@ -16,7 +16,7 @@ export async function findCountryByCode(code: string, signal?: AbortSignal) {
 export function useCountryByCodeQuery(code: string) {
 	return useQuery<ICountry, FetchError>({
 		queryKey: countryByCodeQueryKeyFactory(code),
-		queryFn: () => findCountryByCode(code),
+		queryFn: ({ signal }) => findCountryByCode(code, signal),
 		staleTime: Infinity,
 		retry: false
 	})

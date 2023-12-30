@@ -1,4 +1,4 @@
-import { QueryClient, useQuery, useQueryClient } from 'react-query'
+import { QueryClient, useQuery, useQueryClient } from '@tanstack/react-query'
 
 import { countryByCodeQueryKeyFactory } from './useCountryByCodeQuery'
 import { fetcher, FetchError } from '../fetcher'
@@ -54,7 +54,7 @@ export function useAllCountriesQuery(params: FindAllCountriesParams = {}) {
 
 	return useQuery<ICountry[], FetchError>({
 		queryKey: allCountriesQueryKeyFactory(params),
-		queryFn: () => findAllCountries(params, client),
+		queryFn: ({ signal }) => findAllCountries(params, client, signal),
 		staleTime: Infinity,
 		retry: false
 	})

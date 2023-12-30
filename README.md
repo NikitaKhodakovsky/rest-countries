@@ -6,25 +6,30 @@ This is a solution to the [REST Countries challenge on Frontend Mentor](https://
 
 ## Table of contents
 
+-   [Links](#links)
 -   [Screenshots](#screenshots)
 -   [Built with](#built-with)
 -   [How to run the application](#how-to-run-the-application)
     -   [React Scripts](#react-scripts)
     -   [Docker](#docker)
 
+## Links
+
+-   [Live Demo](https://countries.khodakovsky.com)
+
 ## Screenshots
 
-![list-desktop-dark](https://github.com/NikitaKhodakovsky/rest-countries/assets/52799295/3e3c572d-14ff-46de-93ad-5a5040404a75)
-![list-desktop-light](https://github.com/NikitaKhodakovsky/rest-countries/assets/52799295/06740ef6-f822-4008-b49b-d8dc990729cd)
+![list-desktop-dark](https://github.com/NikitaKhodakovsky/rest-countries/assets/52799295/2ea9db7b-4408-420f-b839-3983bfedeb2c)
+![list-desktop-light](https://github.com/NikitaKhodakovsky/rest-countries/assets/52799295/6f067d0b-c468-4e13-a5d7-032fb8e2ff1b)
 
-![list-mobile-dark](https://github.com/NikitaKhodakovsky/rest-countries/assets/52799295/7177a2ee-e16f-4115-9215-af2187f6362b)
-![list-mobile-light](https://github.com/NikitaKhodakovsky/rest-countries/assets/52799295/616cc781-d9bd-410f-aa72-a6feda4dc14d)
+![list-mobile-dark](https://github.com/NikitaKhodakovsky/rest-countries/assets/52799295/61bf0d10-af43-4a65-8a3c-705929a8133d)
+![list-mobile-light](https://github.com/NikitaKhodakovsky/rest-countries/assets/52799295/39f1cc8d-035b-45f0-966f-fc29f2a3df69)
 
-![details-desktop-dark](https://github.com/NikitaKhodakovsky/rest-countries/assets/52799295/4bd3618a-596f-439c-b0b5-3808a1d667ad)
-![details-desktop-light](https://github.com/NikitaKhodakovsky/rest-countries/assets/52799295/4198c691-36b7-4b98-99f0-ca2836f59783)
+![details-desktop-dark](https://github.com/NikitaKhodakovsky/rest-countries/assets/52799295/1c111744-d692-415f-93b4-0f871d41af14)
+![details-desktop-light](https://github.com/NikitaKhodakovsky/rest-countries/assets/52799295/94f03ca0-1d7a-441d-a929-09a58a9f37e9)
 
-![details-mobile-dark](https://github.com/NikitaKhodakovsky/rest-countries/assets/52799295/86137a62-d36b-49d7-8dd5-5f606940a8ba)
-![details-mobile-light](https://github.com/NikitaKhodakovsky/rest-countries/assets/52799295/d6a52c3f-669e-4076-a550-1495224cfd20)
+![details-mobile-dark](https://github.com/NikitaKhodakovsky/rest-countries/assets/52799295/282aace4-c28e-4749-8d4b-fc2abc883a78)
+![details-mobile-light](https://github.com/NikitaKhodakovsky/rest-countries/assets/52799295/cd51d38a-4a4f-40c0-a109-2e8084bc00e7)
 
 ## Built with
 

@@ -25,7 +25,7 @@
 	}
 
 	&.chevron {
-		mask-image: url('../../../public/icons/chevron.svg');
+		mask-image: url('assets/icons/chevron.svg');
 
 		&.up {
 			transform: rotate(180deg);
@@ -33,18 +33,18 @@
 	}
 
 	&.arrow-left {
-		mask-image: url('../../../public/icons/arrow-left.svg');
+		mask-image: url('assets/icons/arrow-left.svg');
 	}
 
 	&.moon {
-		mask-image: url('../../../public/icons/moon.svg');
+		mask-image: url('assets/icons/moon.svg');
 	}
 
 	&.sun {
-		mask-image: url('../../../public/icons/sun.svg');
+		mask-image: url('assets/icons/sun.svg');
 	}
 
 	&.search {
-		mask-image: url('../../../public/icons/search.svg');
+		mask-image: url('assets/icons/search.svg');
 	}
 }

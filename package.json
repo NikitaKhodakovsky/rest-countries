@@ -30,7 +30,7 @@
 	"scripts": {
 		"dev": "vite",
 		"build": "tsc && vite build",
-		"preview": "vite preview"
+		"start": "npm run build && vite preview --port 3000"
 	},
 	"browserslist": [
 		"iOS >= 13",
